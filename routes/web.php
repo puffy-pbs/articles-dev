@@ -12,12 +12,12 @@
 */
 
 Route::get('/', function () {
-    dump(\Illuminate\Support\Facades\Auth::user()->roles);
-    dump(\Illuminate\Support\Facades\Gate::allows('admin-area'));
      return view('welcome');
 });
 
-Route::get('/admin-area');
+Route::get('/admin-area', function () {
+
+})->middleware('can:view');
 
 Auth::routes();
 
