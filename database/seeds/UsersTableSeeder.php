@@ -12,15 +12,11 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $role = \App\Role::find(\App\Role::ADMINISTRATOR);
+        $administratorRole = \App\Role::find(\App\Role::ADMINISTRATOR);
         factory(User::class)
             ->create()
-            ->each(function ($user) use ($role) {
-                dump($role);
-                $roleDemo = factory(\App\Role::class)->make([
-                    'name' => $role->name
-                ]);
-                $user->roles()->save($roleDemo);
+            ->each(function ($user) use ($administratorRole) {
+                $user->roles()->save($administratorRole);
             });
     }
 }
