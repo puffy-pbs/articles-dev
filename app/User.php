@@ -41,4 +41,13 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Role');
     }
+
+    public function isUserAdmin()
+    {
+        $isUserAdmin = $this->roles->filter(function ($role) {
+            return $role->id === Role::ADMINISTRATOR;
+        });
+
+        return $isUserAdmin;
+    }
 }
