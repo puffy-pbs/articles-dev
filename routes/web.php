@@ -19,11 +19,10 @@ Route::group(['prefix' => 'admin-area', 'middleware' => 'admin'], function () {
     Route::get('/', 'UserController@index');
     Route::get('/update/{id}', 'UserController@update');
     Route::post('/save/{id}', 'UserController@save');
+    Route::get('/erase/{id}', 'UserController@erase');
+    Route::get('/create', 'UserController@create');
+    Route::post('/register', 'UserController@register');
 });
-
-/*Route::prefix('admin-area')->group(function () {
-    Route::get('/', 'AdminArea@view');
-})->middleware(\App\Http\Middleware\AdminMiddleware::class);*/
 
 Auth::routes();
 
