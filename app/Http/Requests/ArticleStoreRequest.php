@@ -34,8 +34,6 @@ class ArticleStoreRequest extends FormRequest
 
     public function messages()
     {
-        return [
-            'required' => 'asd'
-        ];
+        return [];
     }
 }
