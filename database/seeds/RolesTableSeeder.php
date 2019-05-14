@@ -1,5 +1,6 @@
 <?php
 
+use App\Role;
 use Illuminate\Database\Seeder;
 
 class RolesTableSeeder extends Seeder
@@ -13,12 +14,7 @@ class RolesTableSeeder extends Seeder
     {
         $roles = collect(['Administrator', 'Author']);
         $roles->each(function ($role) {
-            factory(\App\Role::class)->create(['name' => $role]);
+            factory(Role::class)->create(['name' => $role]);
         });
-    }
-
-    public function retrieveUserRole()
-    {
-        return range(1, 2);
     }
 }

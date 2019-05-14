@@ -1,6 +1,7 @@
 <?php
 
 use App\User;
+use App\Role;
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
@@ -12,11 +13,13 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $administratorRole = \App\Role::find(\App\Role::ADMINISTRATOR);
-        factory(User::class)
+        $roles = [Role::find(Role::ADMINISTRATOR), Role::find(Role::AUTHOR)];
+
+        factory(User::class, 30)
             ->create()
-            ->each(function ($user) use ($administratorRole) {
-                $user->roles()->save($administratorRole);
+            ->each(function ($user) use ($roles) {
+                $role = $roles[mt_rand(0, 1)];
+                $user->roles()->save($role);
             });
     }
 }

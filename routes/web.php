@@ -1,29 +1,21 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-     return view('welcome');
-});
+Route::get('/', 'ArticleController@index');
+Auth::routes();
 
 Route::group(['prefix' => 'admin-area', 'middleware' => 'admin'], function () {
     Route::get('/', 'UserController@index');
     Route::get('/update/{id}', 'UserController@update');
-    Route::post('/save/{id}', 'UserController@save');
+    Route::post('/save', 'UserController@save');
     Route::get('/erase/{id}', 'UserController@erase');
     Route::get('/create', 'UserController@create');
-    Route::post('/register', 'UserController@register');
+    Route::post('/store', 'UserController@store');
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/articles', 'ArticleController@index');
+Route::get('/articles/create', 'ArticleController@create')->middleware('auth');
+Route::get('/articles/update/{id}', 'ArticleController@update')->middleware('auth');
+Route::get('/articles/erase/{id}', 'ArticleController@erase')->middleware('admin');
+Route::post('/articles/save/{id}', 'ArticleController@save')->middleware('auth');
+Route::get('/articles/{id}', 'ArticleController@detail');
+Route::post('/articles/store', 'ArticleController@store')->middleware('auth');

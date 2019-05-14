@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="container">
+                <a href="admin-area/create" style="margin: 5px;">Create</a>
                 <table class="table table-striped">
                     <thead>
                     <tr>

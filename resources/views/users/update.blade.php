@@ -5,8 +5,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="container">
-                    <form method="POST" action="/admin-area/save/{{ $user->id }}">
+                    <form method="POST" action="/admin-area/save">
                         @csrf
+                        <input type="hidden" name="id" value="{{ $user->id }}">
                         <div class="form-group">
                             <label for="name">Title</label>
                             <input id="name" class="form-control" name="name" type="text" class="@error('title') is-invalid @enderror" value="{{ $user->name }}" />

@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
             $table->text('body_text');
             $table->date('publish_on');
             $table->string('image_url');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }

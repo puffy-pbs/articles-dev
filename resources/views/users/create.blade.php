@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="container">
-                    <form method="POST" action="/admin-area/register">
+                    <form method="POST" action="/admin-area/store">
                         @csrf
                         <div class="form-group">
                             <label for="name">Title</label>
